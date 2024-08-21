@@ -9,14 +9,14 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title">ADD New Service Sales</h4>
+                <h4 class="page-title">ADD New Item Sales</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">ERP</a></li>
                         <li class="breadcrumb-item"><a href="/">Inventory</a></li>
-                        <li class="breadcrumb-item"><a href="/service-sales">Survice Sales</a></li>
-                        <li class="breadcrumb-item active">ADD Service Sales</li>
+                        <li class="breadcrumb-item"><a href="/service-sales">Item Sales</a></li>
+                        <li class="breadcrumb-item active">ADD Item Sales</li>
                     </ol>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 <div class="card-header border-bottom bg-transparent">
                     <div class="row">
                         <div class="col-lg-6">
-                            <h5 class="header-title mb-0">Service Sales Form</h5>
+                            <h5 class="header-title mb-0">Item Sales Form</h5>
                         </div>
 
                         <div class="col-lg-4">

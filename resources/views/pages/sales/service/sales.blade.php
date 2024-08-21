@@ -11,12 +11,12 @@
             <div class="page-title-box">
                 <h4 class="page-title">
                     <a href="/add-service-sales" class="btn btn-primary" >
-                        <i class="fa fa-plus-circle"> </i> Service Sales </a></h4>
+                        <i class="fa fa-plus-circle"> </i> Item Sales </a></h4>
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">ERP</a></li>
                         <li class="breadcrumb-item"><a href="/">Inventory</a></li>
-                        <li class="breadcrumb-item active">Service Sales</li>
+                        <li class="breadcrumb-item active">Item Sales</li>
                     </ol>
                 </div>
             </div>

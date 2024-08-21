@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('vat')->nullable();
             $table->string('total');
             $table->text('remarks')->nullable();
+            $table->text('status')->nullable();
             $table->timestamps();
         });
     }
