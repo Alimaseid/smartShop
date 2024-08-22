@@ -12,5 +12,5 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ims.smartbmsshop.com
-        username: imsftp@ims.smartbmsshop.com
+        username: ims@ims.smartbmsshop.com
         password: ${{ secrets.ftp_password }}
