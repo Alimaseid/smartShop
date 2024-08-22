@@ -110,7 +110,6 @@
                                                     </th>
                                                     <input type="hidden" id="unit">
                                                     <input type="hidden" id="item_name">
-
                                                     <th>
                                                         <input type="number" onchange="getTotal()" id="quantity" step="any" min="0" class="form-control" placeholder="Quantity">
                                                     </th>
@@ -119,7 +118,6 @@
                                                     </th>
                                                     <th>
                                                         <input type="number" id="total" step="any" min="0"  required class="form-control" placeholder="Total" readonly>
-
                                                     </th>
                                                     <th>
                                                         <a class="btn btn-primary" onclick="addList()"><i class="fa fa-plus"></i></a>
