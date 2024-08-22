@@ -84,12 +84,10 @@
                                              {{-- @forelse ($requisitions as $requisition )
                                                 <option value="{{ $requisition->id }}">{{ $requisition->requisition_no }}</option>
                                              @empty
-
                                              @endforelse --}}
                                         </select>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
