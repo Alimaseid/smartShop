@@ -261,24 +261,21 @@
 
                 <a href="/" class="logo logo-dark text-center">
                     <span class="logo-sm">
-                        <span class="logo-lg-text-light">ERP</span>
+                        <span class="logo-lg-text-light">IMS</span>
                     </span>
                     <span class="logo-lg">
-                        <img src="https://yt3.googleusercontent.com/UcqQw3CGIe8FZp1isFdwlc89Sc1v5py-LvlcjIWWxSzY7CRJNIXcHN_O_pJE1PmVud3VkNueyw=s176-c-k-c0x00ffffff-no-rj"
-                            style="border-radius: 50%" height="40px">
-                        alt="">
-                        <span class="logo-lg-text-light">ERP-Inv</span>
+
+                        <span class="logo-lg-text-light">Smart Shop</span>
                     </span>
                 </a>
 
                 <a href="/" class="logo logo-light text-center">
                     <span class="logo-sm">
-                        <span class="logo-lg-text-light">ERP</span>
+                        <span class="logo-lg-text-light">IMS</span>
                     </span>
                     <span class="logo-lg">
-                        <img src="https://yt3.googleusercontent.com/UcqQw3CGIe8FZp1isFdwlc89Sc1v5py-LvlcjIWWxSzY7CRJNIXcHN_O_pJE1PmVud3VkNueyw=s176-c-k-c0x00ffffff-no-rj"
-                            alt="" style="border-radius: 50%" height="40px">
-                        <span class="logo-lg-text-light">ERP-Inv</span>
+
+                        <span class="logo-lg-text-light">Smart Shop </span>
                     </span>
                 </a>
             </div>
