@@ -8,8 +8,7 @@
         <div class="col-12">
             <div class="page-title-box">
                 <h4 class="page-title">
-                    <a class="btn btn-primary btn-sm" href="/add-item">
-                        <i class="fa fa-plus-circle"> ADD New Item </i></a>
+                Sales
                 </h4>
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
