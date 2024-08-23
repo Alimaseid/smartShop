@@ -77,7 +77,7 @@
                          <div class="col-lg-4">
                             <div class="col-lg-12 col-sm-12">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    {{-- <div class="col-lg-6">
                                         <label for="">Requisition#</label>
                                         <select class="form-control" name="requisition_id" data-toggle="select2">
                                              <option value="">Requisition No</option>
@@ -87,7 +87,7 @@
 
                                              @endforelse
                                         </select>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-lg-6">
                                         <label for="" >Supplire's Invoice No#</label>
                                         <input type="text" class="form-control" step="any"  name="vendor_invoice_no">

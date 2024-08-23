@@ -28,7 +28,7 @@ class WarehouseController extends Controller
         $data = warehouse::create($request->all());
         $data->location_type = $request->location_type;
         $data->save();
-        return back()->with('success', 'Warehouse Create Successful');
+        return back()->with('success', 'Location Create Successful');
     }
 
     /**
@@ -46,7 +46,7 @@ class WarehouseController extends Controller
     {
         $request->validated($request->all());
         $warehouse->update($request->all());
-        return back()->with('success', 'Warehouse updated successfully');
+        return back()->with('success', 'Location updated successfully');
     }
 
     /**

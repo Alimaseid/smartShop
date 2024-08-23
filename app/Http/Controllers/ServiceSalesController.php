@@ -208,6 +208,6 @@ class ServiceSalesController extends Controller
 
         SalesDetails::where('sales_id', $id)->delete();
         Sales::find($id)->delete();
-        return  redirect('/service-sales')->with('success', 'Service Sales Successfuly Removed.');
+        return  redirect('/service-sales')->with('success', ' Sales Successfuly Removed.');
     }
 }
