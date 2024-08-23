@@ -379,6 +379,13 @@
                             </a>
                         </li>
                         <li>
+                            <a href="salesApproved">
+                                <i class=" fas fa-reply-all"></i>
+                                {{-- <span class="badge bg-info float-end">3</span> --}}
+                                <span> Sales Approved </span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="inventoryAdjustment">
                                 <i class=" fas fa-reply-all"></i>
                                 {{-- <span class="badge bg-info float-end">3</span> --}}

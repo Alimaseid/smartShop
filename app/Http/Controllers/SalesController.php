@@ -78,7 +78,7 @@ class SalesController extends Controller
 
         $this->customerBalance($sales->customer->id,$sales->id,$total,$request->remarks);
 
-        return redirect('/product-sales')->with('success', 'Sales Done');;
+        return redirect('/product-sales')->with('success', 'Sales Done');
     }
 
     /**

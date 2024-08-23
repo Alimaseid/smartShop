@@ -27,7 +27,7 @@ class ServiceSalesController extends Controller
     {
         $items = Item::orderBy('id', 'desc')
             ->where('isTrash', false)
-            ->whereNot('item_class', 'Stok Item')
+            ->where('item_class', 'Stok Item')
             ->get();
         $customers = Customer::where('isTrash', false)->get();
         $locations = warehouse::where('isTrash', false)->get();
@@ -71,7 +71,8 @@ class ServiceSalesController extends Controller
             'remarks' => $request->remarks,
             'isServiceSales' => true
         ]);
-
+        $sales->status= 'Pending';
+        $sales->save();
 
         $sub_total = 0;
         foreach ($request->product_list as $product) {

@@ -11,6 +11,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RequisitionController;
+use App\Http\Controllers\SalesApprovedController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SalesQuotationController;
 use App\Http\Controllers\ServiceSalesController;
@@ -180,6 +181,12 @@ Route::middleware('auth')->group(function () {
         Route::get('adjustmentEdit-{id}','edit');
         Route::post('inventoryAdjustment-{Id}','update');
         Route::get('adjustmentDelete-{id}','destroy');
+    });
+
+    Route::controller(SalesApprovedController::class)->group(function(){
+        Route::get('salesApproved','index');
+        Route::get('approveSales-{id}','approve');
+
     });
 
 });

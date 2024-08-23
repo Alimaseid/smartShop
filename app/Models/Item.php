@@ -43,6 +43,10 @@ class Item extends Model
     {
         return $this->hasMany(PurchaseDetail::class, 'item_id');
     }
+    public function salesDetails()
+    {
+        return $this->hasMany(SalesDetails::class, 'item_id');
+    }
 
     public function adjustment()
     {
