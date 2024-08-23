@@ -268,13 +268,11 @@
                         <span class="logo-lg-text-light">Smart Shop</span>
                     </span>
                 </a>
-
                 <a href="/" class="logo logo-light text-center">
                     <span class="logo-sm">
                         <span class="logo-lg-text-light">IMS</span>
                     </span>
                     <span class="logo-lg">
-
                         <span class="logo-lg-text-light">Smart Shop </span>
                     </span>
                 </a>
