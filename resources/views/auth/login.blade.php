@@ -2,6 +2,7 @@
 <html lang="en" data-topbar-color="brand">
 
 <!-- Mirrored from coderthemes.com/wb/minton/layouts/default/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Jul 2023 13:48:46 GMT -->
+
 <head>
     <meta charset="utf-8" />
     <title>Log In | Minber- Admin & Dashboard </title>
@@ -79,82 +80,75 @@
 
 <body>
     <div class="account-pages ">
-        <div class="box col-sm-12 ">
-            <div class="row d-flex justify-content-center">
-
-                <div class="col-md-6">
 
 
-                </div>
-                <div class="col-md-6 ">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-2 col-sm-12 col-12">
+            </div>
 
-                    <div class="card-body" style="margin-top: 40%;margin-left:20px">
+            <div class="col-md-6 col-sm-12 col-12" style="margin-top: 130px">
+                <p style="color: white;font-size:38px"> <strong>Smart Shop Inventory System</strong></p>
 
-                        <form method="POST" action="{{ route('login') }}" style="margin-top: -10%;">
-                            @csrf
-                            <div class="mb-2 col-9">
-                                <label for="emailaddress" class="form-label">Email address</label>
-                                <input class="form-control" type="email" id="email" name="email"
-                                    :value="old('email')" required="" placeholder="Enter your email">
-                                <x-input-error :messages="$errors->get('email')" class="mt-2 " />
-                            </div>
+                <div class="card-body" style="margin-top: 15%;margin-left:10px">
 
-                            <div class="mb-2 col-9">
-
-                                <label for="password" class="form-label">Password</label>
-                                <div class="input-group input-group-merge">
-                                    <input type="password" id="password" name="password" class="form-control"
-                                        placeholder="Enter your password">
-
-                                </div>
-                                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                            </div>
-
-                            <div class="mb-3 col-9">
-                                <div class="form-check">
-                                    <label for="remember_me" class="inline-flex items-center">
-                                        <input id="remember_me" type="checkbox"
-                                            class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
-                                            name="remember">
-                                        <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="d-grid col-9 mb-0 text-center">
-                                <button class="btn btn-primary" type="submit"> Log In </button>
-                            </div>
-
-                        </form>
-
-                        <div class="row mt-3">
-                            <div class="col-12 text-center">
-                                @if (Route::has('password.request'))
-                                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                        href="{{ route('password.request') }}">
-                                        {{ __('Forgot your password?') }}
-                                    </a>
-                                @endif
-                                {{-- <p class="text-muted">Don't have an account? <a href="{{ route('register') }}"" class="text-primary fw-medium ms-1">Register</a></p> --}}
-                            </div> <!-- end col -->
+                    <form method="POST" action="{{ route('login') }}" style="margin-top: -10%;">
+                        @csrf
+                        <div class="mb-2 col-9">
+                            <label for="emailaddress" class="form-label" style="color: white">Email address</label>
+                            <input class="form-control" type="email" id="email" name="email"
+                                :value="old('email')" required="" placeholder="Enter your email">
+                            <x-input-error :messages="$errors->get('email')" class="mt-2 " />
                         </div>
+
+                        <div class="mb-2 col-9">
+
+                            <label for="password" class="form-label" style="color: white">Password</label>
+                            <div class="input-group input-group-merge">
+                                <input type="password" id="password" name="password" class="form-control"
+                                    placeholder="Enter your password">
+
+                            </div>
+                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                        </div>
+
+                        <div class="mb-3 col-9">
+                            <div class="form-check">
+                                <label for="remember_me" class="inline-flex items-center">
+                                    <input id="remember_me" type="checkbox"
+                                        class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
+                                        name="remember">
+                                    <span class="ml-2 text-sm text-gray-600" style="color: white">{{ __('Remember me') }}</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="d-grid col-9 mb-0 text-center">
+                            <button class="btn btn-primary" type="submit"> Log In </button>
+                        </div>
+
+                    </form>
+
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            @if (Route::has('password.request'))
+                                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    href="{{ route('password.request') }}">
+                                    {{ __('Forgot your password?') }}
+                                </a>
+                            @endif
+                            {{-- <p class="text-muted">Don't have an account? <a href="{{ route('register') }}"" class="text-primary fw-medium ms-1">Register</a></p> --}}
+                        </div> <!-- end col -->
                     </div>
-
-
-
-
-
-
-
                 </div>
             </div>
 
         </div>
 
-
-
-
-
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div class="text-white" style="margin-bottom: 20px">
+                Powered By <img src="SkyLinkLogo.png" alt="" style="height: 60px; width: 160px; ">
+            </div>
+        </div>
     </div>
 </body>
 
