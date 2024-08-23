@@ -19,6 +19,9 @@ use App\Http\Controllers\TransferController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\WarehouseController;
 use App\Models\InventoryAdjustment;
+use App\Models\Item;
+use App\Models\Purchase;
+use App\Models\Sales;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +39,11 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $totalSalesAmount = Sales::sum('total');
+        $totalPurchaseAmount = Purchase::sum('total');
+        $item = Item::all();
+
+        return view('dashboard', compact('totalSalesAmount', 'totalPurchaseAmount', 'item'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -184,7 +191,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::controller(SalesApprovedController::class)->group(function(){
-        Route::get('salesApproved','index');
+        Route::get('salesApproved','index')->name('salesApproved');
         Route::get('approveSales-{id}','approve');
 
     });

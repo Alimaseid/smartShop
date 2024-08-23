@@ -79,16 +79,16 @@
                                                     <option value="Credit ">Credit </option>
                                                 </select>
                                             </div>
-                                            <div class="col-lg-6">
+                                            {{-- <div class="col-lg-6">
                                                 <label for="">Quotation#</label>
                                                 <select class="form-control" name="quotation_no" data-toggle="select2">
                                                     <option value="">Quotation No</option>
-                                                    {{-- @forelse ($requisitions as $requisition )
+                                                    @forelse ($requisitions as $requisition )
                                                 <option value="{{ $requisition->id }}">{{ $requisition->requisition_no }}</option>
                                              @empty
-                                             @endforelse --}}
+                                             @endforelse
                                                 </select>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@
                                                                     <option value="">Select Product</option>
                                                                     @forelse ($items as $item)
 
-                                                                        <option value="{{ $item->id }}" data-retail-price="{{ $item->retail_price }}">
+                                                                        <option value="{{ $item->id }}" data-price="{{ $item->retail_price }}">
                                                                             {{ $item->name }} &nbsp; &nbsp; &nbsp; &nbsp; #{{ $item->item_number }}
                                                                         </option>
                                                                     @empty
@@ -244,7 +244,12 @@
 
     <script>
         function getItemInfo(){
-            const id = document.getElementById('item_id').value;
+            const select = document.getElementById('item_id');
+        const id = select.value;
+        const price = select.options[select.selectedIndex].getAttribute('data-price');
+
+        // Set the price field to the item's retail price
+        document.getElementById('price').value = price;
             $.ajax({
                 url: "api/getProductInfo/"+id,
                 type: "GET",

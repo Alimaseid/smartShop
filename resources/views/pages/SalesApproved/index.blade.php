@@ -20,6 +20,24 @@
             </div>
         </div>
     </div>
+    <form method="GET" action="{{ route('salesApproved') }}">
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <label for="">from</label>
+                <input type="date" name="start_date" class="form-control" placeholder="Start Date">
+            </div>
+            <div class="col-md-3">
+                <label for="">to</label>
+                <input type="date" name="end_date" class="form-control" placeholder="End Date">
+            </div>
+            <div class="col-md-3 mt-3">
+                <input type="text" name="customer_name" class="form-control" placeholder="Customer Name">
+            </div>
+            <div class="col-md-3 mt-3">
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+        </div>
+    </form>
 
 
     <div class="row " style="max-height: 50%">
@@ -99,6 +117,7 @@
                                                                 </div>
 
                                                             </div>
+                                                            <hr>
                                                             @foreach ($salesDetails as $salesDetail)
                                                                 @if ($salesDetail->sales_id == $sale->id)
                                                                     <div class="row">
@@ -147,10 +166,6 @@
                                                                 @endif
                                                             @endforeach
 
-                                                            <div class="modal-footer custom">
-
-
-                                                            </div>
                                                         </form>
                                                     </div>
 
@@ -205,7 +220,7 @@
                         </thead>
                         <tbody>
                             @php $no = 0; @endphp
-                            @foreach ($sales as $sale)
+                            @foreach ($approvedSales as $sale)
                                 @if ($sale->status == 'Approved')
                                     @php $no = $no + 1; @endphp
                                     <tr>

@@ -12,13 +12,13 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title">Edit Service Sales</h4>
+                <h4 class="page-title">Edit Item Sales</h4>
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">ERP</a></li>
                         <li class="breadcrumb-item"><a href="/">Inventory</a></li>
-                        <li class="breadcrumb-item"><a href="/service-sales">Service Sales</a></li>
-                        <li class="breadcrumb-item active">Service Sales - {{ $sales->invoice_no }}</li>
+                        <li class="breadcrumb-item"><a href="/service-sales">Item Sales</a></li>
+                        <li class="breadcrumb-item active">Item Sales - {{ $sales->invoice_no }}</li>
                     </ol>
                 </div>
             </div>
@@ -28,13 +28,13 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title">Edit Product Sales</h4>
+                <h4 class="page-title">Edit Item Sales</h4>
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">ERP</a></li>
                         <li class="breadcrumb-item"><a href="/">Inventory</a></li>
-                        <li class="breadcrumb-item"><a href="/product-sales">Product Sales</a></li>
-                        <li class="breadcrumb-item active">Product Sales - {{ $sales->invoice_no }}</li>
+                        <li class="breadcrumb-item"><a href="/product-sales">Item Sales</a></li>
+                        <li class="breadcrumb-item active">Item Sales - {{ $sales->invoice_no }}</li>
                     </ol>
                 </div>
             </div>
@@ -129,17 +129,17 @@
                                         <option value="Credit ">Credit </option>
                                     </select>
                                 </div>
-                                <div class="col-lg-6">
+                                {{-- <div class="col-lg-6">
                                     <label for="">Quotation#</label>
                                     <select class="form-control" name="quotation_no" data-toggle="select2">
                                          <option value="">Quotation No</option>
-                                         {{-- @forelse ($requisitions as $requisition )
+                                         @forelse ($requisitions as $requisition )
                                             <option value="{{ $requisition->id }}">{{ $requisition->requisition_no }}</option>
                                          @empty
 
-                                         @endforelse --}}
+                                         @endforelse
                                     </select>
-                                </div>
+                                </div> --}}
                                </div>
 
                            </div>
