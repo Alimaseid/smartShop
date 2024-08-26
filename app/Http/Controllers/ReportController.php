@@ -182,81 +182,59 @@ class ReportController extends Controller
     }
 
 
-
     public function itemSummary()
     {
-        $salesDetial =   collect(SalesDetails::with('item:id,name')->get())->groupBy('item_id');
-        $purchaseDetial =   collect(PurchaseDetail::with('item:id,name')->get())->groupBy('item_id');
+        $salesDetails = collect(SalesDetails::with('item:id,name')->get())->groupBy('item_id');
+        $purchaseDetails = collect(PurchaseDetail::with('item:id,name')->get())->groupBy('item_id');
 
-        // get purchase item summary
-        $purchase_summary = [];
-        foreach ($purchaseDetial as $purchases) {
+        $merged_data = [];
+
+        // Get purchase item summary and initialize merged data
+        foreach ($purchaseDetails as $purchases) {
             $item_name = '';
             $quantity = 0;
             $total = 0;
             foreach ($purchases as $purchase) {
                 $item_name = $purchase->item->name;
-                $quantity = $quantity + $purchase->quantity;
-                $total = $total + $purchase->total_price;
+                $quantity += $purchase->quantity;
+                $total += $purchase->total_price;
             }
 
-            $purchase_summary[]  = [
+            $merged_data[$item_name] = [
                 'item_name' => $item_name,
                 'purchase_quantity' => $quantity,
                 'purchase_total' => $total,
+                'sales_quantity' => 0, // Initialize with 0 to avoid undefined key issues
+                'sales_total' => 0,
             ];
         }
 
-
-        // get sales item summary
-
-        $sales_summary = [];
-        foreach ($salesDetial as $sales) {
+        // Get sales item summary and merge with purchase data
+        foreach ($salesDetails as $sales) {
             $item_name = '';
             $quantity = 0;
             $total = 0;
             foreach ($sales as $sale) {
                 $item_name = $sale->item->name;
-                $quantity = $quantity + $sale->quantity;
-                $total = $total + $sale->total;
+                $quantity += $sale->quantity;
+                $total += $sale->total;
             }
 
-            $sales_summary[]  = [
-                'item_name' => $item_name,
-                'sales_quantity' => $quantity,
-                'sales_total' => $total,
-            ];
-        }
-
-        $merged_data = [];
-
-        // Merge sales data into the associative array
-        foreach ($sales_summary as $item) {
-            $item_name = $item["item_name"];
-            if (!isset($merged_data[$item_name])) {
-                $merged_data[$item_name] = ["item_name" => $item_name];
+            if (isset($merged_data[$item_name])) {
+                $merged_data[$item_name]['sales_quantity'] = $quantity;
+                $merged_data[$item_name]['sales_total'] = $total;
+            } else {
+                $merged_data[$item_name] = [
+                    'item_name' => $item_name,
+                    'purchase_quantity' => 0, // Initialize with 0 if there are no purchases
+                    'purchase_total' => 0,
+                    'sales_quantity' => $quantity,
+                    'sales_total' => $total,
+                ];
             }
-            $merged_data[$item_name]["sales_quantity"] = $item["sales_quantity"];
-            $merged_data[$item_name]["sales_total"] = $item["sales_total"];
         }
 
-        // Merge purchase data into the associative array
-        foreach ($purchase_summary as $item) {
-            $item_name = $item["item_name"];
-            if (!isset($merged_data[$item_name])) {
-                $merged_data[$item_name] = ["item_name" => $item_name];
-            }
-            $merged_data[$item_name]["purchase_quantity"] = $item["purchase_quantity"];
-            $merged_data[$item_name]["purchase_total"] = $item["purchase_total"];
-        }
-
-
-
-        // return $merged_data;
-        // foreach($merged_data as $pro){
-        //     return $pro['purchase_quantity'];
-        // }
-        return  view('pages.report.item_summary')
+        return view('pages.report.item_summary')
             ->with('date', null)
             ->with('merged_data', $merged_data);
     }

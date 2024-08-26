@@ -35,7 +35,7 @@
                                 <th>PurchaseQyt</th>
                                 <th>PurchaseTotal</th>
                                 <th>SalesQuantity</th>
-                                <th>SaleesTotal</th>
+                                <th>SalesTotal</th>
                                 <th>RemainQuantity</th>
                                 {{-- <th>Balance</th> --}}
                             </tr>
