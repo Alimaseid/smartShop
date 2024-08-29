@@ -289,18 +289,6 @@
                         @php
                             $userList = auth()->user()->can('user-list');
                             $roleList = auth()->user()->can('role-list');
-                            $customerList = auth()->user()->can('customer-list');
-                            $inventoryList = auth()->user()->can('inventoryAdjustment-list');
-                            $disposalList = auth()->user()->can('disposal-list');
-                            $issingList = auth()->user()->can('issuing-list');
-                            $itemList = auth()->user()->can('item-list');
-                            $purchaseList = auth()->user()->can('purchase-list');
-                            $reportList = auth()->user()->can('report');
-                            $approvalList = auth()->user()->can('salesApprove-list');
-                            $salesList = auth()->user()->can('sales-list');
-                            $transferList = auth()->user()->can('transfer-list');
-                            $vendorList = auth()->user()->can('vendor-list');
-                            $locationList = auth()->user()->can('location-list');
 
                         @endphp
 
@@ -345,161 +333,129 @@
                             </li>
                         @endif
                         <li class="menu-title mt-2">Menu</li>
-                        @if ($locationList)
-                            <li>
-                                <a href="#purchase" data-bs-toggle="collapse" aria-expanded="false"
-                                    aria-controls="sidebarEcommerce">
-                                    <i class="fas fa-marker"></i>
-                                    <span class="badge bg-info float-end">1</span>
-                                    <span> Register </span>
-                                </a>
-                                <div class="collapse" id="purchase">
-                                    <ul class="nav-second-level">
-                                        @can('location-list')
-                                            <li>
-                                                <a href="warehouse">Location</a>
-                                            </li>
-                                        @endcan
-
-                                        {{-- <li>
+                        <li>
+                            <a href="#purchase" data-bs-toggle="collapse" aria-expanded="false"
+                                aria-controls="sidebarEcommerce">
+                                <i class="fas fa-marker"></i>
+                                <span class="badge bg-info float-end">1</span>
+                                <span> Register </span>
+                            </a>
+                            <div class="collapse" id="purchase">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="warehouse">Location</a>
+                                    </li>
+                                    {{-- <li>
                                         <a href="shops">Shop</a>
                                     </li> --}}
 
-                                    </ul>
-                                </div>
-                            </li>
-                        @endif
-                        @can('item-list')
-                            <li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/items">
+                                <i class="fas fa-barcode"></i>
+                                <span> Items </span>
+                            </a>
+                        </li>
 
-                                <a href="/items">
-                                    <i class="fas fa-barcode"></i>
-                                    <span> Items </span>
-                                </a>
-                            </li>
-                        @endcan
-                        @if ($purchaseList || $vendorList)
-                            <li>
-                                <a href="#sidebarEcommerce" data-bs-toggle="collapse" aria-expanded="false"
-                                    aria-controls="sidebarEcommerce">
-                                    <i class="fas fa-ambulance"></i>
-                                    <span class="badge bg-info float-end">2</span>
-                                    <span> Purchase </span>
-                                </a>
-                                <div class="collapse" id="sidebarEcommerce">
-                                    <ul class="nav-second-level">
-                                        @can('purchase-list')
-                                            <li>
-                                                <a href="purchase">Purchases</a>
-                                            </li>
-                                        @endcan
+                        <li>
+                            <a href="#sidebarEcommerce" data-bs-toggle="collapse" aria-expanded="false"
+                                aria-controls="sidebarEcommerce">
+                                <i class="fas fa-ambulance"></i>
+                                <span class="badge bg-info float-end">2</span>
+                                <span> Purchase </span>
+                            </a>
+                            <div class="collapse" id="sidebarEcommerce">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="purchase">Purchases</a>
+                                    </li>
+                                    <li>
+                                        <a href="vendor">Vendors</a>
+                                    </li>
 
-                                        @can('vendor-list')
-                                            <li>
-                                                <a href="vendor">Vendors</a>
-                                            </li>
-                                        @endcan
+                                </ul>
+                            </div>
+                        </li>
 
+                        <li>
+                            <a href="#sales" data-bs-toggle="collapse" aria-expanded="false"
+                                aria-controls="sidebarEcommerce">
+                                <i class=" fas fa-shopping-cart"></i>
+                                <span class="badge bg-info float-end">2</span>
+                                <span> Sales </span>
+                            </a>
+                            <div class="collapse" id="sales">
+                                <ul class="nav-second-level">
+                                    {{-- <li>
+                                        <a href="product-sales">Product Sales</a>
+                                    </li> --}}
+                                    <li>
+                                        <a href="service-sales">Item Sales</a>
+                                    </li>
+                                    <li>
+                                        <a href="customer">Customer</a>
+                                    </li>
 
-                                    </ul>
-                                </div>
-                            </li>
-                        @endif
-                        @if ($customerList || $salesList)
-                            <li>
-                                <a href="#sales" data-bs-toggle="collapse" aria-expanded="false"
-                                    aria-controls="sidebarEcommerce">
-                                    <i class=" fas fa-shopping-cart"></i>
-                                    <span class="badge bg-info float-end">2</span>
-                                    <span> Sales </span>
-                                </a>
-                                <div class="collapse" id="sales">
-                                    <ul class="nav-second-level">
-                                        {{-- <li>
-                <a href="product-sales">Product Sales</a>
-            </li> --}}
-                                        @can('sales-list')
-                                            <li>
-                                                <a href="service-sales">Item Sales</a>
-                                            </li>
-                                        @endcan
-
-                                        @can('customer-list')
-                                            <li>
-                                                <a href="customer">Customer</a>
-                                            </li>
-                                        @endcan
-
-
-                                    </ul>
-                                </div>
-                            </li>
-                        @endif
-                        @can('transfer-list')
-                            <li>
-                                <a href="transefer-item">
-                                    <i class=" fas fa-text-height"></i>
-                                    {{-- <span class="badge bg-info float-end">3</span> --}}
-                                    <span> Item Transfer </span>
-                                </a>
-                            </li>
-                        @endcan
-                        @can('salesApprove')
-                            <li>
-                                <a href="salesApproved">
-                                    <i class=" fas fa-reply-all"></i>
-                                    {{-- <span class="badge bg-info float-end">3</span> --}}
-                                    <span> Sales Approved </span>
-                                </a>
-                            </li>
-                        @endcan
-                        @can('inventoryAdjustment-list')
-                            <li>
-                                <a href="inventoryAdjustment">
-                                    <i class=" fas fa-reply-all"></i>
-                                    {{-- <span class="badge bg-info float-end">3</span> --}}
-                                    <span> Inventory Adjustment </span>
-                                </a>
-                            </li>
-                        @endcan
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="transefer-item">
+                                <i class=" fas fa-text-height"></i>
+                                {{-- <span class="badge bg-info float-end">3</span> --}}
+                                <span> Item Transfer </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="salesApproved">
+                                <i class=" fas fa-reply-all"></i>
+                                {{-- <span class="badge bg-info float-end">3</span> --}}
+                                <span> Sales Approved </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="inventoryAdjustment">
+                                <i class=" fas fa-reply-all"></i>
+                                {{-- <span class="badge bg-info float-end">3</span> --}}
+                                <span> Inventory Adjustment </span>
+                            </a>
+                        </li>
 
 
-                        @can('disposal-list')
-                            <li>
-                                <a href="disposing">
-                                    <i class="fas fa-trash"></i>
-                                    <span> Disposing </span>
-                                </a>
-                            </li>
-                        @endcan
+                        <li>
+                            <a href="disposing">
+                                <i class="fas fa-trash"></i>
+                                <span> Disposing </span>
+                            </a>
+                        </li>
 
-                        @if ($reportList)
-                            <li>
-                                <a href="#report" data-bs-toggle="collapse" aria-expanded="false"
-                                    aria-controls="sidebarEcommerce">
-                                    <i class=" fas fa-chart-line"></i>
-                                    <span class="badge bg-info float-end">3</span>
-                                    <span> Reports </span>
-                                </a>
-                                <div class="collapse" id="report">
-                                    <ul class="nav-second-level">
-                                        <li>
-                                            <a href="sales-summary">Sales Summary</a>
-                                        </li>
-                                        <li>
-                                            <a href="purchaseSummary">Purchase Summary</a>
-                                        </li>
-                                        <li>
-                                            <a href="itemSummary">Item Summary</a>
-                                        </li>
-                                        <li>
-                                            <a href="inventory-report">Inventory Report</a>
-                                        </li>
+                        <li>
+                            <a href="#report" data-bs-toggle="collapse" aria-expanded="false"
+                                aria-controls="sidebarEcommerce">
+                                <i class=" fas fa-chart-line"></i>
+                                <span class="badge bg-info float-end">3</span>
+                                <span> Reports </span>
+                            </a>
+                            <div class="collapse" id="report">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="sales-summary">Sales Summary</a>
+                                    </li>
+                                    <li>
+                                        <a href="purchaseSummary">Purchase Summary</a>
+                                    </li>
+                                    <li>
+                                        <a href="itemSummary">Item Summary</a>
+                                    </li>
+                                    <li>
+                                        <a href="inventory-report">Inventory Report</a>
+                                    </li>
 
-                                    </ul>
-                                </div>
-                            </li>
-                        @endif
+                                </ul>
+                            </div>
+                        </li>
 
 
                     </ul>
@@ -525,86 +481,191 @@
                 <!-- Start Content-->
                 <div class="container-fluid">
                 </div> <!-- container -->
+@include('inc.message')
 
-                @yield('content')
-
-            </div> <!-- content -->
-
-            <!-- Footer Start -->
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script> &copy; Design and Developed By <a href="#">SkyLink
-                                Technologies</a>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="text-md-end footer-links d-none d-sm-block">
-                                <a href="javascript:void(0);">About Us</a>
-                                <a href="javascript:void(0);">Help</a>
-                                <a href="javascript:void(0);">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Users</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Users</a></li>
+                        <li class="breadcrumb-item active">Edit</li>
+                    </ol>
                 </div>
-            </footer>
-            <!-- end Footer -->
+            </div>
+        </div>
+    </div>
 
+    <div class="card  rounded-3 px-3 ">
+        <div class="card-header  bg-primary rounded-3 " style="margin-top: -10px;color:#fff">
+            <div style="display: flex; justify-content: space-between;">
+                <strong>Edit User</strong>
+                <a href="{{ route('users.index') }}" class="text-white"><i class="fas fa-arrow-left"></i>
+                    Back</a>
+            </div>
         </div>
 
-        <!-- ============================================================== -->
-        <!-- End Page content -->
-        <!-- ============================================================== -->
+        <div class="card-body">
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
 
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
 
+                    <ul>
+
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+
+                    </ul>
+
+                </div>
+            @endif
+            {!! Form::model($user, ['method' => 'PATCH', 'route' => ['users.update', $user->id]]) !!}
+
+            @csrf
+            <div class="row   mt-3">
+                <div class="col-6">
+                    <div class="form-group">
+
+                        <strong>Name:</strong>
+
+                        {!! Form::text('name', null, ['placeholder' => 'Name', 'class' => 'form-control']) !!}
+
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+
+                        <strong>Email:</strong>
+
+                        {!! Form::text('email', null, ['placeholder' => 'Email', 'class' => 'form-control']) !!}
+
+                    </div>
+                </div>
+            </div>
+            <div class="row  mt-3">
+                <div class="col-6">
+                    <div class="form-group">
+
+                        <strong>Password:</strong>
+
+                        {!! Form::password('password', ['placeholder' => 'Password', 'class' => 'form-control']) !!}
+
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+
+                        <strong>Confirm Password:</strong>
+
+                        {!! Form::password('confirm-password', ['placeholder' => 'Confirm Password', 'class' => 'form-control']) !!}
+
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="form-group">
+
+                        <strong>Role:</strong>
+
+                        {!! Form::select('roles[]', $roles, $userRole, ['class' => 'form-control']) !!}
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+
+        </div>
+        {!! Form::close() !!}
     </div>
-    <!-- END wrapper -->
+</div>
 
-    <!-- Right bar overlay-->
-    <div class="rightbar-overlay"></div>
+</div> <!-- content -->
 
-    <!-- Vendor js -->
-    <script src="assets/js/vendor.min.js"></script>
+<!-- Footer Start -->
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> &copy; Design and Developed By <a href="#">SkyLink
+                    Technologies</a>
+            </div>
+            <div class="col-md-6">
+                <div class="text-md-end footer-links d-none d-sm-block">
+                    <a href="javascript:void(0);">About Us</a>
+                    <a href="javascript:void(0);">Help</a>
+                    <a href="javascript:void(0);">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- end Footer -->
 
-    <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
+</div>
 
-    <!-- Sweet alert init js-->
-    <script src="assets/js/pages/sweet-alerts.init.js"></script>
-
-    <!-- Plugin js-->
-    <script src="assets/libs/parsleyjs/parsley.min.js"></script>
-
-    <!-- Validation init js-->
-    <script src="assets/js/pages/form-validation.init.js"></script>
-    <script src="assets/libs/select2/js/select2.min.js"></script>
+<!-- ============================================================== -->
+<!-- End Page content -->
+<!-- ============================================================== -->
 
 
-    <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-    <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
-    <script src="assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
-    <script src="assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="assets/libs/datatables.net-buttons/js/buttons.flash.min.js"></script>
-    <script src="assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-    <script src="assets/libs/datatables.net-select/js/dataTables.select.min.js"></script>
-    <script src="assets/libs/pdfmake/build/pdfmake.min.js"></script>
-    <script src="assets/libs/pdfmake/build/vfs_fonts.js"></script>
+</div>
+<!-- END wrapper -->
 
-    <script src="assets/js/pages/datatables.init.js"></script><!-- end row-->
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
 
-    <!-- Plugins js -->
-    <script src="assets/libs/moment/min/moment.min.js"></script>
-    <script src="assets/libs/x-editable/bootstrap-editable/js/bootstrap-editable.min.js"></script>
+<!-- Vendor js -->
+<script src="assets/js/vendor.min.js"></script>
 
-    <!-- Init js-->
-    <script src="assets/js/pages/form-xeditable.init.js"></script>
-    <!-- App js -->
-    <script src="assets/js/app.min.js"></script>
+<script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- Sweet alert init js-->
+<script src="assets/js/pages/sweet-alerts.init.js"></script>
+
+<!-- Plugin js-->
+<script src="assets/libs/parsleyjs/parsley.min.js"></script>
+
+<!-- Validation init js-->
+<script src="assets/js/pages/form-validation.init.js"></script>
+<script src="assets/libs/select2/js/select2.min.js"></script>
+
+
+<script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+<script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+<script src="assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
+<script src="assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="assets/libs/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<script src="assets/libs/datatables.net-select/js/dataTables.select.min.js"></script>
+<script src="assets/libs/pdfmake/build/pdfmake.min.js"></script>
+<script src="assets/libs/pdfmake/build/vfs_fonts.js"></script>
+
+<script src="assets/js/pages/datatables.init.js"></script><!-- end row-->
+
+<!-- Plugins js -->
+<script src="assets/libs/moment/min/moment.min.js"></script>
+<script src="assets/libs/x-editable/bootstrap-editable/js/bootstrap-editable.min.js"></script>
+
+<!-- Init js-->
+<script src="assets/js/pages/form-xeditable.init.js"></script>
+<!-- App js -->
+<script src="assets/js/app.min.js"></script>
 
 
 
@@ -613,3 +674,4 @@
 <!-- Mirrored from coderthemes.com/wb/minton/layouts/default/pages-starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Jul 2023 13:48:46 GMT -->
 
 </html>
+

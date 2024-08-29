@@ -14,6 +14,13 @@ use Illuminate\Support\Carbon;
 
 class ReportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('permission:report', ['only' => ['salesSummary', 'purchaseSummary','itemSummary','inventoryReport']]);
+
+    }
     public function salesSummary()
     {
 

@@ -14,6 +14,8 @@ use App\Models\SalesDetails;
 
 class SalesController extends Controller
 {
+
+    
     /**
      * Display a listing of the resource.
      */

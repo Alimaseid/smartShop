@@ -12,9 +12,20 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('permission:item-list|item-create|item-edit|item-delete', ['only' => ['index', 'store']]);
+
+        $this->middleware('permission:item-create', ['only' => ['create', 'store']]);
+
+        $this->middleware('permission:item-edit', ['only' => ['edit', 'update']]);
+
+        $this->middleware('permission:item-delete', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $items = Item::orderBy('id','desc')->where('isTrash',false)->get();

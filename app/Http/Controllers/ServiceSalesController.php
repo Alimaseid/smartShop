@@ -15,6 +15,18 @@ use App\Models\ItemPerStore;
 
 class ServiceSalesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('permission:sales-list|sales-create|sales-edit|sales-delete', ['only' => ['index', 'store']]);
+
+        $this->middleware('permission:sales-create', ['only' => ['create', 'store']]);
+
+        $this->middleware('permission:sales-edit', ['only' => ['edit', 'update']]);
+
+        $this->middleware('permission:sales-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $sales = Sales::orderBy('id', 'DESC')

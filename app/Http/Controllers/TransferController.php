@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Auth;
 
 class TransferController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('permission:itemTransfer-list|itemTransfer-create|itemTransfer-edit|itemTransfer-delete', ['only' => ['items','newItemTransfer', 'store']]);
+
+        $this->middleware('permission:itemTransfer-create', ['only' => ['create', 'store','storeItemTransfer']]);
+
+        $this->middleware('permission:itemTransfer-edit', ['only' => ['editItemTransfer', 'update']]);
+
+        $this->middleware('permission:itemTransfer-delete', ['only' => ['destroy']]);
+    }
     public function items(){
         $transfers = TransferItem::orderby('id','desc')
         ->with('details')

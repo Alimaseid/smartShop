@@ -16,9 +16,19 @@ use App\Models\warehouse;
 
 class PurchaseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('permission:purchase-list|purchase-create|purchase-edit|purchase-delete', ['only' => ['index', 'store']]);
+
+        $this->middleware('permission:purchase-create', ['only' => ['create', 'store']]);
+
+        $this->middleware('permission:purchase-edit', ['only' => ['edit', 'update']]);
+
+        $this->middleware('permission:purchase-delete', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $purchases = Purchase::orderBy('id', 'desc')

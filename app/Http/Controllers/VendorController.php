@@ -11,9 +11,18 @@ use Illuminate\Http\Request;
 
 class VendorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('permission:vendor-list|vendor-create|vendor-edit|vendor-delete', ['only' => ['index', 'store','payment']]);
+
+        $this->middleware('permission:vendor-create', ['only' => ['create', 'store']]);
+
+        $this->middleware('permission:vendor-edit', ['only' => ['edit', 'update','editPayment']]);
+
+        $this->middleware('permission:vendor-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $vendors = Vendor::orderBy('id','desc')->where('isTrash',false)->get();

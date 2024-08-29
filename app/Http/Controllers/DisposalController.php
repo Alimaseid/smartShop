@@ -10,6 +10,18 @@ use Illuminate\Http\Request;
 
 class DisposalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('permission:disposal-list|disposal-create|disposal-edit|disposal-delete', ['only' => ['index', 'store']]);
+
+        $this->middleware('permission:disposal-create', ['only' => ['create', 'store']]);
+
+        $this->middleware('permission:disposal-edit', ['only' => ['edit', 'update']]);
+
+        $this->middleware('permission:disposal-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
 

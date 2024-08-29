@@ -9,7 +9,14 @@ use Illuminate\Http\Request;
 
 class SalesApprovedController extends Controller
 {
-    //
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('permission:salesApprove', ['only' => ['index', 'approve']]);
+
+    }
 
     public function index(Request $request)
     {

@@ -12,6 +12,18 @@ use Illuminate\Support\Facades\Redirect;
 class InventoryAdjustmentController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('permission:inventoryAdjustment-list|inventoryAdjustment-create|inventoryAdjustment-edit|inventoryAdjustment-delete', ['only' => ['index', 'store']]);
+
+        $this->middleware('permission:inventoryAdjustment-create', ['only' => ['create', 'store']]);
+
+        $this->middleware('permission:inventoryAdjustment-edit', ['only' => ['edit', 'update']]);
+
+        $this->middleware('permission:inventoryAdjustment-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $adjustments = InventoryAdjustment::all();

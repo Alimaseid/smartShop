@@ -8,9 +8,18 @@ use App\Http\Requests\UpdatewarehouseRequest;
 
 class WarehouseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('permission:location-list|location-create|location-edit|location-delete', ['only' => ['index', 'store']]);
+
+        $this->middleware('permission:location-create', ['only' => ['create', 'store']]);
+
+        $this->middleware('permission:location-edit', ['only' => ['edit', 'update']]);
+
+        $this->middleware('permission:location-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $warehouses = warehouse::where('isShop', false)->get();

@@ -16,9 +16,20 @@ use Illuminate\Support\Facades\Redirect;
 
 class IssuingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('permission:issuing-list|issuing-create|issuing-edit|issuing-delete', ['only' => ['index', 'store']]);
+
+        $this->middleware('permission:issuing-create', ['only' => ['create', 'store']]);
+
+        $this->middleware('permission:issuing-edit', ['only' => ['edit', 'update']]);
+
+        $this->middleware('permission:issuing-delete', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $issues = Issuing::orderby('id', 'desc')

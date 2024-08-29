@@ -11,11 +11,13 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RequisitionController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SalesApprovedController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SalesQuotationController;
 use App\Http\Controllers\ServiceSalesController;
 use App\Http\Controllers\TransferController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\WarehouseController;
 use App\Models\InventoryAdjustment;
@@ -50,6 +52,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('users', UserController::class);
+    Route::get('edituser-{id}',[UserController::class, 'edit']);
+    Route::resource('roles', RoleController::class);
+    Route::get('editRole-{id}',[RoleController::class, 'edit']);
+
 
     Route::controller(WarehouseController::class)->group(function(){
         Route::get('warehouse','index');
