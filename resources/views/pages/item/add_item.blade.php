@@ -25,18 +25,15 @@
                         <form action="item" method="post" class="parsley-examples">
                             @csrf
                             <div class="row pb-2">
-                                <div class="col-lg-4">
+                                {{-- <div class="col-lg-4">
                                     <label class="form-label">Item Number</label>
                                     <input  type="text" name="item_number" class="form-control"  placeholder="Item Number"/>
-                                </div>
-                                <div class="col-lg-8">
+                                </div> --}}
+                                <div class="col-lg-6">
                                     <label class="form-label">Description *</label>
                                     <input  type="text" name="name" class="form-control" required placeholder="Description"/>
                                 </div>
-                            </div>
-
-                            <div class="row pb-2">
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                                     <label class="form-label">Item Class </label>
                                     <select name="item_class" class="form-control" id="" required>
                                         <option value="Stok Item">Stok Item</option>
@@ -44,7 +41,11 @@
                                         <option value="Service">Service</option>
                                     </select>
                                 </div>
-                                <div class="col-lg-4">
+                            </div>
+
+                            <div class="row pb-2">
+
+                                <div class="col-lg-6">
                                     <label class="form-label">Category</label>
                                     <a style="float: right;" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#bs-example-modal-lg"> <i class="fa fa-plus-circle"></i></a>
                                     <select name="category"  required class="form-control" id="">
@@ -55,7 +56,7 @@
                                         @endforelse
                                     </select>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                                     <label class="form-label">Unit</label>
                                     <input  type="text" name="unit"  class="form-control" required  placeholder="Unit"/>
                                 </div>

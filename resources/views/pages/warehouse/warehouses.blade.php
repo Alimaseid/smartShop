@@ -102,14 +102,14 @@
                                                     placeholder="Name" />
                                             </div>
                                         </div>
-                                        <div class="mb-2">
+                                        {{-- <div class="mb-2">
                                             <label class="form-label">Location Type</label>
                                             <select name="location_type" class="form-control" id="location_type" required>
                                                 <option value="">Select</option>
                                                 <option value="ትልቁ መጋዘን">ትልቁ መጋዘን</option>
                                                 <option value="ትንሹ መጋዘን">ትንሹ መጋዘን</option>
                                             </select>
-                                        </div>
+                                        </div> --}}
                                         <div class="mb-2">
                                             <label class="form-label">ManageBy</label>
                                             <div>

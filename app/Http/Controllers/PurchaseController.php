@@ -53,7 +53,7 @@ class PurchaseController extends Controller
     {
         $items = Item::orderBy('id', 'desc')->where('isTrash', false)->get();
         $vendors = Vendor::where('isTrash', false)->get();
-        $locations = warehouse::where('location_type','ትልቁ መጋዘን')->get();
+        $locations = warehouse::all();
         $requisitions = Requisition::select('id', 'requisition_no')->get();
         return view('pages.purchase.add_order')
             ->with('vendors', $vendors)
