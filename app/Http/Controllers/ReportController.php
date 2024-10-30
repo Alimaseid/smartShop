@@ -60,8 +60,6 @@ class ReportController extends Controller
             ->with('summary', $summary);
     }
 
-
-
     public function getSalesSummaryByDate(Request $request)
     {
         $request->validate(['daterange' => 'required']);
